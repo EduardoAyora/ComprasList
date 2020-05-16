@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import {PRODUCTS} from './shared/products';
-import {ControllableTable} from './components/ControllableTable';
+import {ControllableTableComponent} from './components/ControllableTableComponent';
 
 function App() {
   return (
     <div className="App">
-      <ControllableTable products={PRODUCTS} />
+      <ControllableTableComponent products={PRODUCTS} />
     </div>
   );
 }

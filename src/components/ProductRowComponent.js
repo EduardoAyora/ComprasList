@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class ProductRow extends React.Component {
+export class ProductRowComponent extends React.Component {
 
   render() {
     const product = this.props.product;
