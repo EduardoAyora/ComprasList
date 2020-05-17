@@ -6,12 +6,16 @@ export class ProductTableComponent extends React.Component {
   render() {
     const products = this.props.products.map(product => <ProductRowComponent product={product} key={product.name} />);
     return(
-      <div>
-        <table>
-          <tbody>
-            {products}
-          </tbody>
-        </table>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <table>
+              <tbody>
+                {products}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     );
   }
