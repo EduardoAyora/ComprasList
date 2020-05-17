@@ -1,4 +1,5 @@
 import React from 'react';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 export class ProductRowComponent extends React.Component {
 
@@ -7,7 +8,7 @@ export class ProductRowComponent extends React.Component {
     return(
       <tr>
         <td>
-          <img className="carrito-img" alt="carrito" src="../../images/carrito.png" />
+          <AddShoppingCartIcon />
           {product.name}
         </td>
       </tr>

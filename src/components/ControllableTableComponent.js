@@ -1,7 +1,8 @@
 import React from 'react';
-import {HeaderComponent} from './HeaderComponent';
+import {HeaderAllComponent} from './HeaderAllComponent';
 import {ProductTableComponent} from './ProductTableComponent';
 import {PanelComponent} from './PanelComponent';
+import {Switch, Route} from "react-router-dom";
 
 export class ControllableTableComponent extends React.Component {
 
@@ -24,9 +25,17 @@ export class ControllableTableComponent extends React.Component {
     const products = this.props.products;
     return (
       <div>
-        <HeaderComponent />
-        <PanelComponent searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />
-        <ProductTableComponent products={products} searchText={this.state.searchText} />
+        <HeaderAllComponent />
+        <Switch>
+          <Route exact path="/">
+            <PanelComponent searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />
+            <ProductTableComponent products={products} searchText={this.state.searchText} />
+          </Route>
+          <Route path="/carrito">
+            <p>hola</p>
+          </Route>
+        </Switch>
+
       </div>
     );
   }
