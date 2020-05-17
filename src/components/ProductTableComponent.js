@@ -4,7 +4,16 @@ import {ProductRowComponent} from './ProductRowComponent';
 export class ProductTableComponent extends React.Component {
 
   render() {
-    const products = this.props.products.map(product => <ProductRowComponent product={product} key={product.name} />);
+    const searchText = this.props.searchText.toLowerCase();
+    const products = [];
+    this.props.products.forEach((product) => {
+      const productNorm = product.name.toLowerCase();
+      if (productNorm.indexOf(searchText) === -1) {
+        return;
+      }
+      products.push(<ProductRowComponent product={product} key={product.name} />);
+    });
+
     return(
       <div className="container">
         <div className="row">

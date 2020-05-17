@@ -10,7 +10,7 @@ export class PanelComponent extends React.Component {
       <div className="container">
         <div className="row mt-4 mb-4">
           <div className="col">
-            <SearchComponent />
+            <SearchComponent searchText={this.props.searchText} onSearchTextChange={this.props.onSearchTextChange} />
           </div>
         </div>
         <div className="row mt-4 mb-4">

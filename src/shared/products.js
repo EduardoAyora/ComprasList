@@ -6,7 +6,7 @@ export const PRODUCTS = [
     inCart: false
   },
   {
-    name: 'azucar',
+    name: 'AZUCAR',
     aisle: '8',
     description: 'quintal',
     inCart: false
