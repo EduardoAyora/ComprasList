@@ -1,5 +1,6 @@
 import React from 'react';
 import {HeaderAllComponent} from './HeaderAllComponent';
+import {HeaderCartComponent} from './HeaderCartComponent';
 import {ProductTableComponent} from './ProductTableComponent';
 import {PanelComponent} from './PanelComponent';
 import {Switch, Route} from "react-router-dom";
@@ -25,14 +26,15 @@ export class ControllableTableComponent extends React.Component {
     const products = this.props.products;
     return (
       <div>
-        <HeaderAllComponent />
         <Switch>
           <Route exact path="/">
+            <HeaderAllComponent />
             <PanelComponent searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />
             <ProductTableComponent products={products} searchText={this.state.searchText} />
           </Route>
           <Route path="/carrito">
-            <p>hola</p>
+            <HeaderCartComponent />
+            
           </Route>
         </Switch>
 
