@@ -2,6 +2,7 @@ import React from 'react';
 import {HeaderAllComponent} from './HeaderAllComponent';
 import {HeaderCartComponent} from './HeaderCartComponent';
 import {ProductTableComponent} from './ProductTableComponent';
+import {CartTableComponent} from './CartTableComponent';
 import {PanelComponent} from './PanelComponent';
 import {Switch, Route} from "react-router-dom";
 
@@ -34,7 +35,7 @@ export class ControllableTableComponent extends React.Component {
           </Route>
           <Route path="/carrito">
             <HeaderCartComponent />
-            
+            <CartTableComponent products={products} />
           </Route>
         </Switch>
 

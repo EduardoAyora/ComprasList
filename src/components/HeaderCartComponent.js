@@ -7,21 +7,18 @@ export class HeaderCartComponent extends React.Component {
 
   render() {
     return(
-      <div>
-        <Navbar bg="light" expand="lg">
-          <div className="container">
-            <Navbar.Brand className="ml-auto">
-              <div>
-              <Link to="/" className="green">
-                  Todos mis artículos
-                  <KeyboardArrowRightIcon fontSize="large" />
-              </Link>
-              </div>
-            </Navbar.Brand>
-          </div>
-        </Navbar>
-      </div>
-
+      <Navbar bg="light" expand="lg">
+        <div className="container">
+          <Navbar.Brand className="ml-auto">
+            <div>
+            <Link to="/" className="green">
+                Todos mis artículos
+                <KeyboardArrowRightIcon fontSize="large" />
+            </Link>
+            </div>
+          </Navbar.Brand>
+        </div>
+      </Navbar>
     );
   }
 

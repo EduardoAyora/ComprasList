@@ -1,19 +1,19 @@
 import React from 'react';
-import {ProductRowComponent} from './ProductRowComponent';
+import {CartRowComponent} from './CartRowComponent';
 
-export class ProductTableComponent extends React.Component {
+export class CartTableComponent extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
 
   render() {
-    const searchText = this.props.searchText.toLowerCase();
     const products = [];
     this.props.products.forEach((product) => {
-      const productNorm = product.name.toLowerCase();
-      if (productNorm.indexOf(searchText) === -1) {
-        return;
+      if(product.inCart === true){
+        products.push(<CartRowComponent product={product} key={product.name} />);
       }
-      products.push(<ProductRowComponent product={product} key={product.name} />);
     });
-
     return(
       <div className="container">
         <div className="row">

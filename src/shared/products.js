@@ -3,7 +3,7 @@ export const PRODUCTS = [
     name: 'arroz',
     aisle: '2',
     description: 'quintal',
-    inCart: false
+    inCart: true
   },
   {
     name: 'AZUCAR',
