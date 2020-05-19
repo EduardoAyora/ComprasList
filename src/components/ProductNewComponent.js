@@ -1,7 +1,7 @@
 import React from 'react';
 import AddIcon from '@material-ui/icons/Add';
 
-export class NewProductComponent extends React.Component {
+export class ProductNewComponent extends React.Component {
 
   render() {
     return(

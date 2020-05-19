@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class SearchComponent extends React.Component {
+export class ProductSearchComponent extends React.Component {
 
   constructor(props) {
     super(props);

@@ -1,11 +1,8 @@
 import React from 'react';
 import {CartRowComponent} from './CartRowComponent';
+import {TableComponent} from './TableComponent';
 
 export class CartTableComponent extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const products = [];
@@ -15,17 +12,7 @@ export class CartTableComponent extends React.Component {
       }
     });
     return(
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <table className="table">
-              <tbody>
-                {products}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <TableComponent products={products} />
     );
   }
 

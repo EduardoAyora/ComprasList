@@ -1,7 +1,7 @@
 import React from 'react';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
-export class AddAllComponent extends React.Component {
+export class ProductAddAllComponent extends React.Component {
   render() {
     return(
       <div>

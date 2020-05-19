@@ -1,9 +1,9 @@
 import React from 'react';
-import {HeaderAllComponent} from './HeaderAllComponent';
-import {HeaderCartComponent} from './HeaderCartComponent';
+import {ProductHeaderComponent} from './ProductHeaderComponent';
+import {CartHeaderComponent} from './CartHeaderComponent';
 import {ProductTableComponent} from './ProductTableComponent';
 import {CartTableComponent} from './CartTableComponent';
-import {PanelComponent} from './PanelComponent';
+import {ProductPanelComponent} from './ProductPanelComponent';
 import {Switch, Route} from "react-router-dom";
 
 export class ControllableTableComponent extends React.Component {
@@ -29,16 +29,15 @@ export class ControllableTableComponent extends React.Component {
       <div>
         <Switch>
           <Route exact path="/">
-            <HeaderAllComponent />
-            <PanelComponent searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />
+            <ProductHeaderComponent />
+            <ProductPanelComponent searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />
             <ProductTableComponent products={products} searchText={this.state.searchText} />
           </Route>
           <Route path="/carrito">
-            <HeaderCartComponent />
+            <CartHeaderComponent />
             <CartTableComponent products={products} />
           </Route>
         </Switch>
-
       </div>
     );
   }
