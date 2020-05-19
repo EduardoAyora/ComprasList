@@ -12,6 +12,9 @@ export function CartRowComponent(props) {
           </div>
         </form>
       </td>
+      <td>
+        {product.aisle}
+      </td>
     </tr>
   );
 }

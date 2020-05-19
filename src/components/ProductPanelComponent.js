@@ -13,7 +13,7 @@ export class ProductPanelComponent extends React.Component {
             <ProductSearchComponent searchText={this.props.searchText} onSearchTextChange={this.props.onSearchTextChange} />
           </div>
         </div>
-        <div className="row mt-4 mb-4">
+        <div className="row mt-4">
           <div className="col-12 col-md-6 mb-4">
             <ProductAddAllComponent />
           </div>

@@ -1,13 +1,13 @@
 import React from 'react';
-import {Navbar} from 'react-bootstrap';
+import {Navbar} from 'reactstrap';
 
 export function HeaderComponent(props) {
   return(
-    <Navbar bg="light" expand="lg">
+    <Navbar className="mb-4" color="light" light expand="md">
       <div className="container">
-        <Navbar.Brand className={props.align}>
+        <div className={props.align}>
           {props.children}
-        </Navbar.Brand>
+        </div>
       </div>
     </Navbar>
   );

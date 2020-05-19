@@ -1,6 +1,5 @@
 import React from 'react';
 import {ProductRowComponent} from './ProductRowComponent';
-import {TableComponent} from './TableComponent';
 
 export class ProductTableComponent extends React.Component {
 
@@ -9,14 +8,24 @@ export class ProductTableComponent extends React.Component {
     const products = [];
     this.props.products.forEach((product) => {
       const productNorm = product.name.toLowerCase();
-      if (productNorm.indexOf(searchText) === -1) {
+      if (productNorm.indexOf(searchText) === -1 || product.inCart === true) {
         return;
       }
       products.push(<ProductRowComponent product={product} key={product.name} />);
     });
 
     return(
-      <TableComponent products={products} />
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <table className="table">
+              <tbody>
+                {products}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     );
   }
 

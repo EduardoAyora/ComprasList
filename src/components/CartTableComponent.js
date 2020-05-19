@@ -1,6 +1,6 @@
 import React from 'react';
 import {CartRowComponent} from './CartRowComponent';
-import {TableComponent} from './TableComponent';
+import {CartQuitComponent} from './CartQuitComponent';
 
 export class CartTableComponent extends React.Component {
 
@@ -12,7 +12,34 @@ export class CartTableComponent extends React.Component {
       }
     });
     return(
-      <TableComponent products={products} />
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <form>
+              <div className="form-check">
+                <input type="checkbox" className="form-check-input" />
+                <label className="form-check-label">Seleccionar Todo</label>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Pasillo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <CartQuitComponent />
+      </div>
     );
   }
 
