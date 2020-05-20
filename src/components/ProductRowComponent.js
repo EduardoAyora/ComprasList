@@ -9,7 +9,7 @@ export class ProductRowComponent extends React.Component {
       <tr>
         <td>
           <AddShoppingCartIcon />
-          {product.name}
+          &nbsp; {product.name}
         </td>
       </tr>
     );

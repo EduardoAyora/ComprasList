@@ -1,6 +1,7 @@
 import React from 'react';
 import AddIcon from '@material-ui/icons/Add';
-import Modal from 'react-bootstrap/Modal';
+import {Button, Modal, ModalHeader, ModalBody,
+    Form, FormGroup, Input, Label } from 'reactstrap';
 
 export class ProductNewComponent extends React.Component {
 
@@ -10,7 +11,7 @@ export class ProductNewComponent extends React.Component {
         isModalOpen: false
     };
     this.toggleModal = this.toggleModal.bind(this);
-    this.handleHi = this.handleHi.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   toggleModal() {
@@ -19,26 +20,40 @@ export class ProductNewComponent extends React.Component {
     });
   }
 
-  handleHi(event) {
-      this.toggleModal();
-      alert("si");
-      event.preventDefault();
+  handleAdd(event) {
+    this.toggleModal();
+    alert("Username: " + this.username.value + " Pasillo: " + this.aisle.value
+      + " Descripcion: " + this.description.value);
+    event.preventDefault();
   }
 
   render() {
     return(
       <div>
         <button className="btn btn-outline-success btn-block" onClick={this.toggleModal}>
-          <AddIcon />
-          <span className="fa fa-sign-in fa-lg"></span>
+          <AddIcon />&nbsp;
           Nuevo producto
         </button>
-        <Modal show={this.state.isModalOpen} onHide={this.toggleModal} animation="false">
-          <Modal.Header>Login</Modal.Header>
-          <Modal.Body>Esto es un texto</Modal.Body>
-          <Modal.Footer>
-            <button onClick={this.handleHi}>hi</button>
-          </Modal.Footer>
+        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+          <ModalHeader toggle={this.toggleModal}>Nuevo Producto</ModalHeader>
+          <ModalBody>
+            <Form onSubmit={this.handleAdd}>
+                <FormGroup>
+                    <Label htmlFor="username">Nombre</Label>
+                    <Input type="text" id="username" name="username" innerRef={(input) => this.username = input} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor="aisle">Pasillo</Label>
+                    <Input type="text" id="aisle" name="aisle" innerRef={(input) => this.aisle = input}  />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor="description">Description</Label>
+                    <Input type="textarea" id="description" name="description" rows="4"
+                    innerRef={(input) => this.description = input}  />
+                </FormGroup>
+                <Button type="submit" value="submit" color="primary">Añadir</Button>
+            </Form>
+          </ModalBody>
         </Modal>
       </div>
     );

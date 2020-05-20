@@ -7,7 +7,7 @@ export function CartRowComponent(props) {
       <td>
         <form>
           <div className="form-check">
-            <input type="checkbox" className="form-check-input" />
+            <input type="checkbox" className="form-check-input" />&nbsp;
             <label className="form-check-label">{product.name}</label>
           </div>
         </form>
