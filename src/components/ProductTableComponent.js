@@ -16,15 +16,11 @@ export class ProductTableComponent extends React.Component {
 
     return(
       <div className="container">
-        <div className="row">
-          <div className="col">
-            <table className="table">
-              <tbody>
-                {products}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <table className="table">
+          <tbody>
+            {products}
+          </tbody>
+        </table>
       </div>
     );
   }
