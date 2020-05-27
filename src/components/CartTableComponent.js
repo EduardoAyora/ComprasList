@@ -38,7 +38,7 @@ export class CartTableComponent extends React.Component {
             </table>
           </div>
         </div>
-        <CartQuitComponent />
+        <CartQuitComponent goneClick={this.props.goneClick} />
       </div>
     );
   }

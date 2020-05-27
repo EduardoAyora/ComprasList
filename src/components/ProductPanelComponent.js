@@ -15,10 +15,10 @@ export class ProductPanelComponent extends React.Component {
         </div>
         <div className="row mt-4">
           <div className="col-12 col-md-6 mb-4">
-            <ProductAddAllComponent />
+            <ProductAddAllComponent addAllClick={this.props.addAllClick} />
           </div>
           <div className="col-12 col-md-6 mb-4">
-            <ProductNewComponent />
+            <ProductNewComponent createdClick={this.props.createdClick} />
           </div>
         </div>
       </div>

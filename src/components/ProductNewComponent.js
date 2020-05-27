@@ -22,7 +22,7 @@ export class ProductNewComponent extends React.Component {
 
   handleAdd(event) {
     this.toggleModal();
-    alert("Username: " + this.username.value + " Pasillo: " + this.aisle.value
+    console.log("Username: " + this.username.value + " Pasillo: " + this.aisle.value
       + " Descripcion: " + this.description.value);
     event.preventDefault();
   }
@@ -37,7 +37,7 @@ export class ProductNewComponent extends React.Component {
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Nuevo Producto</ModalHeader>
           <ModalBody>
-            <Form onSubmit={this.handleAdd}>
+            <Form onSubmit={ (event) => {this.handleAdd(event); this.props.createdClick();} }>
                 <FormGroup>
                     <Label htmlFor="username">Nombre</Label>
                     <Input type="text" id="username" name="username" innerRef={(input) => this.username = input} />

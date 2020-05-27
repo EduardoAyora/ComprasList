@@ -10,6 +10,7 @@ export class ProductDeleteComponent extends React.Component {
         <ConfirmComponent
           header='Eliminar producto' body='¿Está seguro que desea eliminar este producto?'
           buttonClassName="btn btn-light" buttonContent={<DeleteIcon fontSize="small" />}
+          buttonAction={this.props.deleteClick}
         />
       </div>
     );

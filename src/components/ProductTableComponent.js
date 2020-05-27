@@ -11,7 +11,8 @@ export class ProductTableComponent extends React.Component {
       if (productNorm.indexOf(searchText) === -1 || product.inCart === true) {
         return;
       }
-      products.push(<ProductRowComponent product={product} key={product.name} />);
+      products.push(<ProductRowComponent product={product} key={product.name}
+        addClick={this.props.addClick} deleteClick={this.props.deleteClick} />);
     });
 
     return(
