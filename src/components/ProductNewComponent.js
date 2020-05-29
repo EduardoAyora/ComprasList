@@ -22,8 +22,7 @@ export class ProductNewComponent extends React.Component {
 
   handleAdd(event) {
     this.toggleModal();
-    console.log("Username: " + this.username.value + " Pasillo: " + this.aisle.value
-      + " Descripcion: " + this.description.value);
+    this.props.addProduct(this.username.value, this.aisle.value, this.description.value, false);
     event.preventDefault();
   }
 

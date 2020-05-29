@@ -1,7 +1,7 @@
 import React from 'react';
 import {ProductRowComponent} from './ProductRowComponent';
 
-export class ProductTableComponent extends React.Component {
+class ProductTableComponent extends React.Component {
 
   render() {
     const searchText = this.props.searchText.toLowerCase();
@@ -27,3 +27,5 @@ export class ProductTableComponent extends React.Component {
   }
 
 }
+
+export default ProductTableComponent;

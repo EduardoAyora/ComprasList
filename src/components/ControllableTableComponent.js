@@ -1,13 +1,24 @@
 import React from 'react';
 import {ProductHeaderComponent} from './ProductHeaderComponent';
 import {CartHeaderComponent} from './CartHeaderComponent';
-import {ProductTableComponent} from './ProductTableComponent';
+import ProductTableComponent from './ProductTableComponent';
 import {CartTableComponent} from './CartTableComponent';
 import {ProductPanelComponent} from './ProductPanelComponent';
 import {Switch, Route} from "react-router-dom";
 import {AlertsComponent} from './AlertsComponent';
 
-export class ControllableTableComponent extends React.Component {
+import { connect } from 'react-redux';
+import {addProduct} from '../store/ActionCreators';
+
+const mapDispatchToProps = dispatch => ({
+  addProduct: (name, aisle, description, inCart) => dispatch(addProduct(name, aisle, description, inCart))
+});
+
+const mapStateToProps = state => {
+  return {products: state.products}
+}
+
+class ControllableTableComponent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -82,7 +93,8 @@ export class ControllableTableComponent extends React.Component {
           <Route exact path="/">
             <ProductHeaderComponent />
             <ProductPanelComponent searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange}
-              addAllClick={this.showAllAddedAlert} createdClick={this.showCreatedAlert} />
+              addAllClick={this.showAllAddedAlert} createdClick={this.showCreatedAlert}
+              addProduct={this.props.addProduct} />
             <ProductTableComponent products={products} searchText={this.state.searchText}
               addClick={this.showAddedAlert} deleteClick={this.showDeletedAlert} />
           </Route>
@@ -100,3 +112,5 @@ export class ControllableTableComponent extends React.Component {
   }
 
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(ControllableTableComponent);
