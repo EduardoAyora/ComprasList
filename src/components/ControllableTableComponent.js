@@ -11,7 +11,9 @@ import {addProduct, loadProducts} from '../store/ActionCreators';
 
 const mapDispatchToProps = dispatch => ({
   addProduct: (name, aisle, description, inCart) => dispatch(addProduct(name, aisle, description, inCart)),
-  loadProducts: (payload) => dispatch(loadProducts(payload))
+  loadProducts: (payload) => dispatch(loadProducts(payload)),
+  // updateProduct: (id, name, aisle, description, inCart, marked) =>
+  //   dispatch(updateProduct(id, name, aisle, description, inCart, marked))
 });
 
 const mapStateToProps = state => {

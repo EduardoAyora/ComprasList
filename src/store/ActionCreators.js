@@ -1,11 +1,6 @@
-export const addProduct = (name, aisle, description, inCart) => ({
+export const addProduct = (product) => ({
     type: 'ADD_PRODUCT',
-    payload: {
-        name: name,
-        aisle: aisle,
-        description: description,
-        inCart: inCart
-    }
+    payload: product
 });
 
 export const loadProducts = (payload) => ({

@@ -8,7 +8,7 @@ class ProductTableComponent extends React.Component {
     const products = [];
     this.props.products.forEach((product) => {
       const productNorm = product.name.toLowerCase();
-      if (productNorm.indexOf(searchText) === -1 || product.inCart === true) {
+      if (productNorm.indexOf(searchText) === -1 || product.inCart === '1') {
         return;
       }
       products.push(<ProductRowComponent product={product} key={product.name}
