@@ -7,3 +7,8 @@ export const addProduct = (name, aisle, description, inCart) => ({
         inCart: inCart
     }
 });
+
+export const loadProducts = (payload) => ({
+    type: 'LOAD_PRODUCTS',
+    payload: payload
+});

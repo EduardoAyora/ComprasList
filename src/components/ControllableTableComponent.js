@@ -6,12 +6,12 @@ import {CartTableComponent} from './CartTableComponent';
 import {ProductPanelComponent} from './ProductPanelComponent';
 import {Switch, Route} from "react-router-dom";
 import {AlertsComponent} from './AlertsComponent';
-
 import { connect } from 'react-redux';
-import {addProduct} from '../store/ActionCreators';
+import {addProduct, loadProducts} from '../store/ActionCreators';
 
 const mapDispatchToProps = dispatch => ({
-  addProduct: (name, aisle, description, inCart) => dispatch(addProduct(name, aisle, description, inCart))
+  addProduct: (name, aisle, description, inCart) => dispatch(addProduct(name, aisle, description, inCart)),
+  loadProducts: (payload) => dispatch(loadProducts(payload))
 });
 
 const mapStateToProps = state => {
@@ -37,6 +37,14 @@ class ControllableTableComponent extends React.Component {
     this.showAllAddedAlert = this.showAllAddedAlert.bind(this);
     this.showCreatedAlert = this.showCreatedAlert.bind(this);
     this.showGoneAlert = this.showGoneAlert.bind(this);
+  }
+
+  componentDidMount() {
+    fetch('http://localhost/compras/read.php')
+      .then(response => response.json())
+      .then(json => {
+        this.props.loadProducts(json)
+      })
   }
 
   handleSearchTextChange(input) {

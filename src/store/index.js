@@ -1,8 +1,7 @@
 import { createStore } from 'redux';
-import {PRODUCTS} from './products';
 
 const initialState = {
-  products: PRODUCTS
+  products: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,9 +10,19 @@ const reducer = (state = initialState, action) => {
       products: state.products.concat(action.payload)
     })
   }
+  if (action.type === 'LOAD_PRODUCTS') {
+    return {
+      ...state,
+      products: action.payload
+    }
+  }
+
   return state;
 };
 
-const store = createStore(reducer);
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default store;
