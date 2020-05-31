@@ -1,5 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import {PRODUCTS} from './data';
+import { baseUrl } from '../shared/baseUrl';
 
 export const addProduct = (name, aisle, description, inCart, marked) => ({
     type: ActionTypes.ADD_PRODUCT,
