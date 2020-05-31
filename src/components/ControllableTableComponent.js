@@ -7,13 +7,11 @@ import {ProductPanelComponent} from './ProductPanelComponent';
 import {Switch, Route} from "react-router-dom";
 import {AlertsComponent} from './AlertsComponent';
 import { connect } from 'react-redux';
-import {addProduct, loadProducts} from '../store/ActionCreators';
+import {addProduct, fetchProducts} from '../store/ActionCreators';
 
 const mapDispatchToProps = dispatch => ({
-  addProduct: (name, aisle, description, inCart) => dispatch(addProduct(name, aisle, description, inCart)),
-  loadProducts: (payload) => dispatch(loadProducts(payload)),
-  // updateProduct: (id, name, aisle, description, inCart, marked) =>
-  //   dispatch(updateProduct(id, name, aisle, description, inCart, marked))
+  addProduct: (name, aisle, description, inCart, marked) => dispatch(addProduct(name, aisle, description, inCart, marked)),
+  fetchProducts: () => {dispatch(fetchProducts())}
 });
 
 const mapStateToProps = state => {
@@ -42,11 +40,7 @@ class ControllableTableComponent extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost/compras/read.php')
-      .then(response => response.json())
-      .then(json => {
-        this.props.loadProducts(json)
-      })
+    this.props.fetchProducts();
   }
 
   handleSearchTextChange(input) {
@@ -105,12 +99,14 @@ class ControllableTableComponent extends React.Component {
             <ProductPanelComponent searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange}
               addAllClick={this.showAllAddedAlert} createdClick={this.showCreatedAlert}
               addProduct={this.props.addProduct} />
-            <ProductTableComponent products={products} searchText={this.state.searchText}
-              addClick={this.showAddedAlert} deleteClick={this.showDeletedAlert} />
+            <ProductTableComponent products={products.products} searchText={this.state.searchText}
+              addClick={this.showAddedAlert} deleteClick={this.showDeletedAlert}
+              productsLoading={products.isLoading} productsErrMess={products.errMess} />
           </Route>
           <Route path="/carrito">
             <CartHeaderComponent />
-            <CartTableComponent products={products} goneClick={this.showGoneAlert} />
+            <CartTableComponent products={products.products} goneClick={this.showGoneAlert}
+              productsLoading={products.isLoading} productsErrMess={products.errMess} />
           </Route>
         </Switch>
 
