@@ -16,9 +16,23 @@ export const addProduct = (name, aisle, description, inCart, marked) => ({
 export const fetchProducts = () => (dispatch) => {
     dispatch(productsLoading(true));
 
-    setTimeout(() => {
-        dispatch(addProducts(PRODUCTS));
-    }, 2000);
+    return fetch(baseUrl + 'read.php')
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+      })
+    .then(response => response.json())
+    .then(products => dispatch(addProducts(products)))
+    .catch(error => dispatch(productsFailed(error.message)));
 }
 
 export const productsLoading = () => ({
