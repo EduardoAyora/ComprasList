@@ -7,10 +7,10 @@ import {ProductPanelComponent} from './ProductPanelComponent';
 import {Switch, Route} from "react-router-dom";
 import {AlertsComponent} from './AlertsComponent';
 import { connect } from 'react-redux';
-import {addProduct, fetchProducts} from '../store/ActionCreators';
+import {postProduct, fetchProducts} from '../store/ActionCreators';
 
 const mapDispatchToProps = dispatch => ({
-  addProduct: (name, aisle, description, inCart, marked) => dispatch(addProduct(name, aisle, description, inCart, marked)),
+  postProduct: (name, aisle, description, inCart, marked) => dispatch(postProduct(name, aisle, description, inCart, marked)),
   fetchProducts: () => {dispatch(fetchProducts())}
 });
 
@@ -98,7 +98,7 @@ class ControllableTableComponent extends React.Component {
             <ProductHeaderComponent />
             <ProductPanelComponent searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange}
               addAllClick={this.showAllAddedAlert} createdClick={this.showCreatedAlert}
-              addProduct={this.props.addProduct} />
+              postProduct={this.props.postProduct} />
             <ProductTableComponent products={products.products} searchText={this.state.searchText}
               addClick={this.showAddedAlert} deleteClick={this.showDeletedAlert}
               productsLoading={products.isLoading} productsErrMess={products.errMess} />

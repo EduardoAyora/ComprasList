@@ -22,7 +22,7 @@ export class ProductNewComponent extends React.Component {
 
   handleAdd(event) {
     this.toggleModal();
-    this.props.addProduct(this.username.value, this.aisle.value, this.description.value, false, false);
+    this.props.postProduct(this.username.value, this.aisle.value, this.description.value, false, false);
     event.preventDefault();
   }
 

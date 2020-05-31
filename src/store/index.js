@@ -4,7 +4,6 @@ import {Products} from './products';
 
 const store = createStore(
   combineReducers({
-      // products: products
       products: Products
   }),
   applyMiddleware(thunk)

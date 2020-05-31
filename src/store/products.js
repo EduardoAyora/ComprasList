@@ -1,17 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 
-// este reducer tiene que estar dentro del de abajo, existe solo un reducer para para cada
-// parte del estado que quiero afectar
-// export const products = (state = PRODUCTS, action) => {
-export const products = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_PRODUCT':
-      var product = action.payload;
-      return state.concat(product);
-    default:
-      return state;
-  }
-};
+// existe solo un reducer para para cada parte del estado que quiero afectar, si quiero afectar
+// los productos, necesito un reducer para el producto
 
 export const Products = (state = { isLoading: true,
     errMess: null,
@@ -25,6 +15,10 @@ export const Products = (state = { isLoading: true,
 
         case ActionTypes.PRODUCTS_FAILED:
             return {...state, isLoading: false, errMess: action.payload};
+
+        case ActionTypes.ADD_PRODUCT:
+            var product = action.payload;
+            return { ...state, isLoading: false, products: state.products.concat(product)};
 
         default:
             return state;
