@@ -7,9 +7,20 @@ export class CartTableComponent extends React.Component {
 
   render() {
     const products = [];
-    this.props.products.forEach((product) => {
+    const orderedProducts = this.props.products;
+    // ordenamos segun el pasillo del producto
+    orderedProducts.sort(function (a, b) {
+      if (a.aisle > b.aisle) {
+        return 1;
+      }
+      if (a.aisle < b.aisle) {
+        return -1;
+      }
+      return 0;
+    });
+    orderedProducts.forEach((product) => {
       if(product.inCart == 1){
-        products.push(<CartRowComponent product={product} key={product.name} />);
+        products.push(<CartRowComponent product={product} key={product.id} />);
       }
     });
     if(this.props.productsLoading){

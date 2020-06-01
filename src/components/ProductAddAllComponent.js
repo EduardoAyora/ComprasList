@@ -15,7 +15,7 @@ export class ProductAddAllComponent extends React.Component {
             Agregar todo al carrito
           </span>
         }
-        buttonAction={this.props.addAllClick}
+        handleClick={this.props.addAllClick}
       />
     );
   }

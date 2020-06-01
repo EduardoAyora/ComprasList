@@ -14,7 +14,8 @@ export class ProductRowComponent extends React.Component {
           <button type="button" className="btn btn-link" style={{color: 'green'}}>
             {product.name}
           </button>
-          <ProductDeleteComponent deleteClick={this.props.deleteClick} />
+          <ProductDeleteComponent deleteClick={this.props.deleteClick} productId={product.id}
+            postDeleteProduct={this.props.postDeleteProduct} />
         </td>
       </tr>
     );

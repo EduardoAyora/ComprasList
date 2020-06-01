@@ -20,6 +20,10 @@ export const Products = (state = { isLoading: true,
             var product = action.payload;
             return { ...state, isLoading: false, products: state.products.concat(product)};
 
+        case ActionTypes.DELETE_PRODUCT:
+            var deleted = action.payload;
+            return { ...state, isLoading: false, products: state.products.filter(product => product.id !== deleted.id)};
+
         default:
             return state;
     }

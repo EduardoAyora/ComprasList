@@ -1,6 +1,8 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
+// ADD ---
+
 export const addProduct = (product) => ({
     type: ActionTypes.ADD_PRODUCT,
     payload: product
@@ -39,6 +41,46 @@ export const postProduct = (name, aisle, description, inCart, marked) => (dispat
   .then(response => dispatch(addProduct(response)))
   .catch(error =>  { console.log('post products', error.message); alert('Your comment could not be posted\nError: '+error.message); });
 };
+
+// DELETE ---
+
+export const deleteProduct = (deleted) => ({
+    type: ActionTypes.DELETE_PRODUCT,
+    payload: deleted
+});
+
+export const postDeleteProduct = (id) => (dispatch) => {
+
+  const objId = {
+      id: id
+  };
+
+  return fetch(baseUrl + 'delete.php', {
+      method: "POST",
+      body: JSON.stringify(objId),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+  })
+  .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+          throw error;
+    })
+  .then(response => response.json())
+  .then(response => dispatch(deleteProduct(response)))
+  .catch(error =>  { console.log('post products', error.message); alert('Your comment could not be posted\nError: '+error.message); });
+};
+
+// FETCH ---
 
 export const fetchProducts = () => (dispatch) => {
     dispatch(productsLoading(true));

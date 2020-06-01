@@ -9,7 +9,7 @@ header: encabezado del Modal
 body: cuerpo o mensaje del Modal
 buttonClassName: estilo para el boton
 buttonContent: la estructura del boton, puede contener iconos, texto, etc. Utilizar etiqueta <span></span>
-buttonAction: lo que se va a ejecutar despues de presionar confirmar en el modal
+handleClick: lo que se va a ejecutar despues de presionar confirmar en el modal
 */
 export class ConfirmComponent extends React.Component {
 
@@ -30,11 +30,11 @@ export class ConfirmComponent extends React.Component {
 
   handleConfirm(event) {
     this.toggleModal();
+    this.props.handleClick();
     event.preventDefault();
   }
 
   render() {
-    const buttonAction = this.props.buttonAction;
     return(
       <div>
         <button className={this.props.buttonClassName} onClick={this.toggleModal}>
@@ -44,9 +44,9 @@ export class ConfirmComponent extends React.Component {
           <ModalHeader toggle={this.toggleModal}>{this.props.header}</ModalHeader>
           <ModalBody>{this.props.body}</ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={ (event)=>{this.handleConfirm(event); buttonAction()} }>
+            <Button color="primary" onClick={this.handleConfirm}>
               Confirmar</Button>
-            &nbsp;
+              &nbsp;
             <Button color="danger" onClick={this.toggleModal}>Cancelar</Button>
           </ModalFooter>
         </Modal>

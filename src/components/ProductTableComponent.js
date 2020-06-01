@@ -7,13 +7,25 @@ class ProductTableComponent extends React.Component {
   render() {
     const searchText = this.props.searchText.toLowerCase();
     const products = [];
-    this.props.products.forEach((product) => {
+    const orderedProducts = this.props.products;
+    // ordenamos segun el nombre del producto
+    orderedProducts.sort(function (a, b) {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
+    });
+    orderedProducts.forEach((product) => {
       const productNorm = product.name.toLowerCase();
       if (productNorm.indexOf(searchText) === -1 || product.inCart == 1) {
         return;
       }
-      products.push(<ProductRowComponent product={product} key={product.name}
-        addClick={this.props.addClick} deleteClick={this.props.deleteClick} />);
+      products.push(<ProductRowComponent product={product} key={product.id}
+        addClick={this.props.addClick} deleteClick={this.props.deleteClick}
+        postDeleteProduct={this.props.postDeleteProduct} />);
     });
     if(this.props.productsLoading){
       return (
