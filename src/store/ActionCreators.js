@@ -1,5 +1,4 @@
 import * as ActionTypes from './ActionTypes';
-import {PRODUCTS} from './data';
 import { baseUrl } from '../shared/baseUrl';
 
 export const addProduct = (product) => ({
@@ -16,7 +15,7 @@ export const postProduct = (name, aisle, description, inCart, marked) => (dispat
       marked: marked
   };
 
-  return fetch(baseUrl + 'create', {
+  return fetch(baseUrl + 'create.php', {
       method: "POST",
       body: JSON.stringify(newProduct),
       headers: {
