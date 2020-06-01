@@ -1,13 +1,35 @@
 import React from 'react';
 
-export function CartQuitComponent(props){
-  return(
-    <div className="row mt-4 mb-4">
-      <div className="offset-4 col-4">
-        <button className="btn btn-outline-success btn-block" onClick={props.goneClick}>
-          Quitar seleccionados
-        </button>
+export class CartQuitComponent extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    const products = this.props.products;
+    products.forEach((product) => {
+      if (product.inCart === "1" && product.marked === "1"){
+        this.props.postUpdateProduct(
+          product.id, product.name, product.aisle, product.description, false, false
+        );
+      }
+    });
+    this.props.goneClick();
+  }
+
+  render() {
+    return(
+      <div className="row mt-4 mb-4">
+        <div className="offset-4 col-4">
+          <button className="btn btn-outline-success btn-block" onClick={this.handleClick}>
+            Quitar seleccionados
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+
 }

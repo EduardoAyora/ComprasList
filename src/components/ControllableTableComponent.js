@@ -109,7 +109,8 @@ class ControllableTableComponent extends React.Component {
           <Route path="/carrito">
             <CartHeaderComponent />
             <CartTableComponent products={products.products} goneClick={this.showGoneAlert}
-              productsLoading={products.isLoading} productsErrMess={products.errMess} />
+              productsLoading={products.isLoading} productsErrMess={products.errMess}
+              postUpdateProduct={this.props.postUpdateProduct} />
           </Route>
         </Switch>
 

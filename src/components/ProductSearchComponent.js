@@ -4,7 +4,6 @@ export class ProductSearchComponent extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
   }
 

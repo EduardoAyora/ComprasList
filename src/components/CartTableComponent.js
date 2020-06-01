@@ -19,8 +19,9 @@ export class CartTableComponent extends React.Component {
       return 0;
     });
     orderedProducts.forEach((product) => {
-      if(product.inCart == 1){
-        products.push(<CartRowComponent product={product} key={product.id} />);
+      if(product.inCart === "1"){
+        products.push(<CartRowComponent product={product} key={product.id}
+          postUpdateProduct={this.props.postUpdateProduct} />);
       }
     });
     if(this.props.productsLoading){
@@ -69,7 +70,8 @@ export class CartTableComponent extends React.Component {
               </table>
             </div>
           </div>
-          <CartQuitComponent goneClick={this.props.goneClick} />
+          <CartQuitComponent goneClick={this.props.goneClick} products={this.props.products}
+            postUpdateProduct={this.props.postUpdateProduct} />
         </div>
       );
     }
