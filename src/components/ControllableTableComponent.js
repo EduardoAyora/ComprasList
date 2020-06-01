@@ -100,7 +100,8 @@ class ControllableTableComponent extends React.Component {
             <ProductHeaderComponent />
             <ProductPanelComponent searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange}
               addAllClick={this.showAllAddedAlert} createdClick={this.showCreatedAlert}
-              postProduct={this.props.postProduct} />
+              postProduct={this.props.postProduct} products={products.products}
+              postUpdateProduct={this.props.postUpdateProduct} />
             <ProductTableComponent products={products.products} searchText={this.state.searchText}
               addClick={this.showAddedAlert} deleteClick={this.showDeletedAlert}
               productsLoading={products.isLoading} productsErrMess={products.errMess}

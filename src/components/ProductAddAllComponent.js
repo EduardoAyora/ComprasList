@@ -4,6 +4,23 @@ import {ConfirmComponent} from './ConfirmComponent';
 
 export class ProductAddAllComponent extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    const products = this.props.products;
+    products.forEach((product) => {
+      if (product.inCart === "0"){
+        this.props.postUpdateProduct(
+          product.id, product.name, product.aisle, product.description, true, false
+        );
+      }
+    });
+    this.props.addAllClick();
+  }
+
   render() {
     return(
       <ConfirmComponent
@@ -15,7 +32,7 @@ export class ProductAddAllComponent extends React.Component {
             Agregar todo al carrito
           </span>
         }
-        handleClick={this.props.addAllClick}
+        handleClick={this.handleClick}
       />
     );
   }

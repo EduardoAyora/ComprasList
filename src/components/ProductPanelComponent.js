@@ -15,7 +15,8 @@ export class ProductPanelComponent extends React.Component {
         </div>
         <div className="row mt-4">
           <div className="col-12 col-md-6 mb-4">
-            <ProductAddAllComponent addAllClick={this.props.addAllClick} />
+            <ProductAddAllComponent addAllClick={this.props.addAllClick} products={this.props.products}
+              postUpdateProduct={this.props.postUpdateProduct} />
           </div>
           <div className="col-12 col-md-6 mb-4">
             <ProductNewComponent createdClick={this.props.createdClick} postProduct={this.props.postProduct} />

@@ -12,7 +12,7 @@ export class CartQuitComponent extends React.Component {
     products.forEach((product) => {
       if (product.inCart === "1" && product.marked === "1"){
         this.props.postUpdateProduct(
-          product.id, product.name, product.aisle, product.description, false, false
+          product.id, product.name, product.aisle, product.description, "0", "0"
         );
       }
     });
