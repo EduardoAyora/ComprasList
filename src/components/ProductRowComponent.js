@@ -9,7 +9,8 @@ export class ProductRowComponent extends React.Component {
     return(
       <tr>
         <td>
-          <ProductAddShoppingComponent addClick={this.props.addClick} />
+          <ProductAddShoppingComponent addClick={this.props.addClick} postUpdateProduct={this.props.postUpdateProduct}
+            product={product} />
           &nbsp;
           <button type="button" className="btn btn-link" style={{color: 'green'}}>
             {product.name}

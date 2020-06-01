@@ -7,12 +7,13 @@ import {ProductPanelComponent} from './ProductPanelComponent';
 import {Switch, Route} from "react-router-dom";
 import {AlertsComponent} from './AlertsComponent';
 import { connect } from 'react-redux';
-import {postProduct, fetchProducts, postDeleteProduct} from '../store/ActionCreators';
+import {postProduct, fetchProducts, postDeleteProduct, postUpdateProduct} from '../store/ActionCreators';
 
 const mapDispatchToProps = dispatch => ({
   postProduct: (name, aisle, description, inCart, marked) => dispatch(postProduct(name, aisle, description, inCart, marked)),
   fetchProducts: () => {dispatch(fetchProducts())},
-  postDeleteProduct: (id) => dispatch(postDeleteProduct(id))
+  postDeleteProduct: (id) => dispatch(postDeleteProduct(id)),
+  postUpdateProduct: (id, name, aisle, description, inCart, marked) => dispatch(postUpdateProduct(id, name, aisle, description, inCart, marked))
 });
 
 const mapStateToProps = state => {
@@ -103,7 +104,7 @@ class ControllableTableComponent extends React.Component {
             <ProductTableComponent products={products.products} searchText={this.state.searchText}
               addClick={this.showAddedAlert} deleteClick={this.showDeletedAlert}
               productsLoading={products.isLoading} productsErrMess={products.errMess}
-              postDeleteProduct={this.props.postDeleteProduct} />
+              postDeleteProduct={this.props.postDeleteProduct} postUpdateProduct={this.props.postUpdateProduct} />
           </Route>
           <Route path="/carrito">
             <CartHeaderComponent />

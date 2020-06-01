@@ -25,7 +25,7 @@ class ProductTableComponent extends React.Component {
       }
       products.push(<ProductRowComponent product={product} key={product.id}
         addClick={this.props.addClick} deleteClick={this.props.deleteClick}
-        postDeleteProduct={this.props.postDeleteProduct} />);
+        postDeleteProduct={this.props.postDeleteProduct} postUpdateProduct={this.props.postUpdateProduct} />);
     });
     if(this.props.productsLoading){
       return (

@@ -42,6 +42,48 @@ export const postProduct = (name, aisle, description, inCart, marked) => (dispat
   .catch(error =>  { console.log('post products', error.message); alert('Your comment could not be posted\nError: '+error.message); });
 };
 
+// UPDATE ---
+
+export const updateProduct = (product) => ({
+    type: ActionTypes.UPDATE_PRODUCT,
+    payload: product
+});
+
+export const postUpdateProduct = (id, name, aisle, description, inCart, marked) => (dispatch) => {
+  const updatedProduct = {
+      id: id,
+      name: name,
+      aisle: aisle,
+      description: description,
+      inCart: inCart,
+      marked: marked
+  };
+
+  return fetch(baseUrl + 'update.php', {
+      method: "POST",
+      body: JSON.stringify(updatedProduct),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+  })
+  .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+          throw error;
+    })
+  .then(response => response.json())
+  .then(response => dispatch(updateProduct(response)))
+  .catch(error =>  { console.log('post products', error.message); alert('Your comment could not be posted\nError: '+error.message); });
+};
+
 // DELETE ---
 
 export const deleteProduct = (deleted) => ({

@@ -24,6 +24,12 @@ export const Products = (state = { isLoading: true,
             var deleted = action.payload;
             return { ...state, isLoading: false, products: state.products.filter(product => product.id !== deleted.id)};
 
+        case ActionTypes.UPDATE_PRODUCT:
+            const index = state.products.findIndex(product => product.id === action.payload.id);
+            let newState = [...state.products];
+            newState[index] = action.payload;
+            return {...state, isLoading: false, products: newState};
+
         default:
             return state;
     }
