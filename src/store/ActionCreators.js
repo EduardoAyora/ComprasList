@@ -84,6 +84,19 @@ export const postUpdateProduct = (id, name, aisle, description, inCart, marked) 
   .catch(error =>  { console.log('post products', error.message); alert('Your comment could not be posted\nError: '+error.message); });
 };
 
+// export const postUpdateProduct = (id, name, aisle, description, inCart, marked) => (dispatch) => {
+//   const updatedProduct = {
+//       id: id,
+//       name: name,
+//       aisle: aisle,
+//       description: description,
+//       inCart: inCart == true ? '1' : '0',
+//       marked: marked == true ? '1' : '0'
+//   };
+//
+//   dispatch(updateProduct(updatedProduct));
+// };
+
 // DELETE ---
 
 export const deleteProduct = (deleted) => ({
