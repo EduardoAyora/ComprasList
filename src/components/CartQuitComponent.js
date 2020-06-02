@@ -21,8 +21,8 @@ export class CartQuitComponent extends React.Component {
 
   render() {
     return(
-      <div className="row mt-4 mb-4">
-        <div className="offset-4 col-4">
+      <div className="row mt-4 mb-4 justify-content-center">
+        <div className="col-5">
           <button className="btn btn-outline-success btn-block" onClick={this.handleClick}>
             Quitar seleccionados
           </button>
