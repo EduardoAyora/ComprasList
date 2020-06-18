@@ -7,17 +7,23 @@ import {ProductPanelComponent} from './ProductPanelComponent';
 import {Switch, Route} from "react-router-dom";
 import {AlertsComponent} from './AlertsComponent';
 import { connect } from 'react-redux';
-import {postProduct, fetchProducts, postDeleteProduct, postUpdateProduct} from '../store/ActionCreators';
+import {postProduct, fetchProducts, postDeleteProduct, postUpdateProduct, loginUser,
+    logoutUser} from '../store/ActionCreators';
 
 const mapDispatchToProps = dispatch => ({
   postProduct: (name, aisle, description, inCart, marked) => dispatch(postProduct(name, aisle, description, inCart, marked)),
   fetchProducts: () => {dispatch(fetchProducts())},
   postDeleteProduct: (id) => dispatch(postDeleteProduct(id)),
-  postUpdateProduct: (id, name, aisle, description, inCart, marked) => dispatch(postUpdateProduct(id, name, aisle, description, inCart, marked))
+  postUpdateProduct: (id, name, aisle, description, inCart, marked) => dispatch(postUpdateProduct(id, name, aisle, description, inCart, marked)),
+  loginUser: (creds) => dispatch(loginUser(creds)),
+  logoutUser: () => dispatch(logoutUser()),
 });
 
 const mapStateToProps = state => {
-  return {products: state.products}
+  return {
+    products: state.products,
+    auth: state.auth
+  }
 }
 
 class ControllableTableComponent extends React.Component {
@@ -97,7 +103,8 @@ class ControllableTableComponent extends React.Component {
       <div>
         <Switch>
           <Route exact path="/">
-            <ProductHeaderComponent />
+            <ProductHeaderComponent loginUser={this.props.loginUser} logoutUser={this.props.logoutUser}
+              auth={this.props.auth} />
             <ProductPanelComponent searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange}
               addAllClick={this.showAllAddedAlert} createdClick={this.showCreatedAlert}
               postProduct={this.props.postProduct} products={products.products}
